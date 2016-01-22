@@ -10,7 +10,7 @@ import com.mashape.unirest.http.JsonNode;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
 
-public class SMAPIOperatios
+public class SMAPIOperations
 {
 
 	String apikey;
@@ -20,13 +20,6 @@ public class SMAPIOperatios
 		this.apikey = apikey;
 	}
 
-	public int createPoll()
-	{
-
-		return 123;
-
-	}
-
 	public String generateSignedLink(int pollId, String destination) throws JSONException, UnirestException
 	{
 
@@ -34,12 +27,6 @@ public class SMAPIOperatios
 		HttpResponse<String> data = Unirest.post(url).header("apikey", this.apikey).header("Content-Type", "application/x-www-form-urlencoded").field("destination", destination).asString();
 		JSONArray arr = new JSONArray(data.getBody().toString());
 		return "https://smapi.teamchat.com/SMApi/api/embed/"+arr.getJSONObject(0).getString("id");
-
-	}
-
-	public String createTinyUrl(String url)
-	{
-		return url;
 
 	}
 
