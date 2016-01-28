@@ -27,20 +27,12 @@ public class Handler extends HttpServlet
 			String mobile = req.getParameter("mobile");
 			String message = req.getParameter("message");
 			int pollId = Integer.parseInt(req.getParameter("chatletid"));
-			if(mobile.contains(","))
-			{
-				mobileArray = mobile.split(",");
-				for(int i=0;i<mobileArray.length;i++)
-				{
-					String sLink = smApi.generateSignedLink(pollId, mobileArray[i]);
-					smApi.sendSMS(mobileArray[i],message,sLink);
-				}
-			}else
-			{
-				String sLink = smApi.generateSignedLink(pollId, mobile);
-				smApi.sendSMS(mobile,message,sLink);
-			}
+			
+			String sLink = smApi.generateSignedLink(pollId, mobile);
+			smApi.sendSMS(mobileArray[i],message,sLink);
+			
 			writer.write("Success.");
+			
 		} catch (Exception e)
 		{
 			writer.write(""+e);
