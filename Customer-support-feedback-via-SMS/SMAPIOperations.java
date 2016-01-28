@@ -23,10 +23,10 @@ public class SMAPIOperations
 	public String generateSignedLink(int pollId, String destination) throws JSONException, UnirestException
 	{
 
-		String url = "http://api.webaroo.com/SMApi/api/smartmsg/msg/" + pollId + "/signedlink";
+		String url = "http://dev-api.webaroo.com/sm/api/smartmsg/msg/" + pollId + "/signedlink";
 		HttpResponse<String> data = Unirest.post(url).header("apikey", this.apikey).header("Content-Type", "application/x-www-form-urlencoded").field("destination", destination).asString();
 		JSONArray arr = new JSONArray(data.getBody().toString());
-		return "https://smapi.teamchat.com/SMApi/api/embed/"+arr.getJSONObject(0).getString("id");
+		return "https://smapi.teamchat.com/SMApi/api/embed/"+arr.getJSONObject(0).getString("embedlink");
 
 	}
 
