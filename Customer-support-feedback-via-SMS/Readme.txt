@@ -14,4 +14,4 @@ Java file description:
     Note: You need to provide your API key here String apiKey = "YOUR API KEY";
 
 2.  SMAPIOperations.java - is the operational class which is used to generate a signed link for each of the user/mobile number and give     us an embedlink that can we send with the sms message.
-    Note: if you are using Gupshup sms account you can use our SaveSMSAccount API and save your credential againts the API key you are             using. if you are using 3rd party telephony provider for sending sms use their SMS API. 
+    Note: if you are using Gupshup sms account you can use our SaveSMSAccount API and save your credential againts the API key you are using. if you are using 3rd party telephony provider for sending sms use their SMS API. 
