@@ -26,7 +26,7 @@ public class Handler extends HttpServlet
 			SMAPIOperatios smApi = new SMAPIOperatios(apiKey);
 			String mobile = req.getParameter("mobile");
 			String message = req.getParameter("message");
-			int pollId = Integer.parseInt(req.getParameter("chatletid"));//smApi.createPoll();
+			int pollId = Integer.parseInt(req.getParameter("chatletid"));//smApi.createPoll(); create a poll at runtime or using gupshup.io swagger
 			if(mobile.contains(","))
 			{
 				mobileArray = mobile.split(",");
