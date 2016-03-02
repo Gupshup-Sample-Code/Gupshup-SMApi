@@ -26,7 +26,7 @@ public class Handler extends HttpServlet
 			SMAPIOperatios smApi = new SMAPIOperatios(apiKey);
 			String mobile = req.getParameter("mobile");
 			String message = req.getParameter("message");
-			int surveyId = Integer.parseInt(req.getParameter("chatletid"));
+			int surveyId = Integer.parseInt(req.getParameter("chatletid"));//smApi.createSurvey(); create a poll at runtime or using gupshup.io swagger
 			
 			String sLink = smApi.generateSignedLink(surveyId, mobile);
 			smApi.sendSMS(mobileArray[i],message,sLink);
