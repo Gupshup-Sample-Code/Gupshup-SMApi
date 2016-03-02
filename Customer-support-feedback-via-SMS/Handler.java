@@ -26,9 +26,9 @@ public class Handler extends HttpServlet
 			SMAPIOperatios smApi = new SMAPIOperatios(apiKey);
 			String mobile = req.getParameter("mobile");
 			String message = req.getParameter("message");
-			int pollId = Integer.parseInt(req.getParameter("chatletid"));
+			int surveyId = Integer.parseInt(req.getParameter("chatletid"));
 			
-			String sLink = smApi.generateSignedLink(pollId, mobile);
+			String sLink = smApi.generateSignedLink(surveyId, mobile);
 			smApi.sendSMS(mobileArray[i],message,sLink);
 			
 			writer.write("Success.");
