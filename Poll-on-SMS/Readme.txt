@@ -1,5 +1,5 @@
 Overview:
-This custom API will help you demonstrate that how by just passing 3 parameters mobile,message and smID you are able to send your smart message to multiple recepitent and capture their feedback regarding the quality of customer support.
+This custom API will help you demonstrate that how by just passing 3 parameters mobile,message and smID you are able to send your smart message to multiple recepitent and capture their feedback through a poll, after she receives the order placed on an e-commerce website
 
 Prerequisite before using APIs:
 1.  You need to have a API Key.
