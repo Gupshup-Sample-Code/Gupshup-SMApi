@@ -20,10 +20,10 @@ public class SMAPIOperations
 		this.apikey = apikey;
 	}
 
-	public String generateSignedLink(int pollId, String destination) throws JSONException, UnirestException
+	public String generateSignedLink(int surveyId, String destination) throws JSONException, UnirestException
 	{
 
-		String url = "http://api.gupshup.io/sm/api/smartmsg/msg/"+ pollId +"/signedlink";
+		String url = "http://api.gupshup.io/sm/api/smartmsg/msg/"+ surveyId +"/signedlink";
 		HttpResponse<String> data = Unirest.post(url).header("apikey", this.apikey).header("Content-Type", "application/x-www-form-urlencoded").field("destination", destination).asString();
 		JSONArray arr = new JSONArray(data.getBody().toString());
 		return arr.getJSONObject(0).getString("embedlink").toString();
