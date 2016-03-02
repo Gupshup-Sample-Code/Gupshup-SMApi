@@ -22,7 +22,7 @@ public class Handler extends HttpServlet
 		try
 		{
 			String[] mobileArray = null;
-			String apiKey = "e3248e67af1f40ebc02390d114508706";// TODO:
+			String apiKey = "YOUR API KEY";// TODO:
 			SMAPIOperatios smApi = new SMAPIOperatios(apiKey);
 			String mobile = req.getParameter("mobile");
 			String message = req.getParameter("message");
@@ -32,26 +32,19 @@ public class Handler extends HttpServlet
 				mobileArray = mobile.split(",");
 				for(int i=0;i<mobileArray.length;i++)
 				{
-//					writer.write("Array "+mobileArray[i]);
 					String sLink = smApi.generateSignedLink(pollId, mobileArray[i]);
 					smApi.sendSMS(mobileArray[i],message,sLink);
 				}
 			}else
 			{
-//				writer.write("mobile"+mobile);
 				String sLink = smApi.generateSignedLink(pollId, mobile);
 				smApi.sendSMS(mobile,message,sLink);
 			}
 			writer.write("Success.");//(sLink);
-			// String tlink = smApi.createTinyUrl(sLink);
-			// String mobile = req.getParameter("user");
-			// String response = req.getParameter("response");
-			 //Utility.getMessageBody(response, mobile));
 		} catch (Exception e)
 		{
 			writer.write(""+e);
 		}
-
 		finally
 		{
 			if (writer != null)
