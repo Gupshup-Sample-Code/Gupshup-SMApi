@@ -20,20 +20,18 @@ public class SMAPIOperatios
 		this.apikey = apikey;
 	}
 
-	public int createPoll()
-	{
-
-		return 123;
-
-	}
+	// public int createPoll()
+	// {
+	// 	return 123;
+	// }
 
 	public String generateSignedLink(int pollId, String destination) throws JSONException, UnirestException
 	{
 
-		String url = "http://api.webaroo.com/SMApi/api/smartmsg/msg/" + pollId + "/signedlink";
+		String url = "http://api.gupshup.io/sm/api/smartmsg/msg/"+ pollId +"/signedlink";
 		HttpResponse<String> data = Unirest.post(url).header("apikey", this.apikey).header("Content-Type", "application/x-www-form-urlencoded").field("destination", destination).asString();
 		JSONArray arr = new JSONArray(data.getBody().toString());
-		return "https://smapi.teamchat.com/SMApi/api/embed/"+arr.getJSONObject(0).getString("id");
+		return arr.getJSONObject(0).getString("embedlink").toString();
 
 	}
 
@@ -47,10 +45,8 @@ public class SMAPIOperatios
 	{
 		String messageBody = message+"\n"
 				+link;
-		String url = "http://api.webaroo.com/SMApi/api/sms/msg";
+		String url = "http://api.gupshup.io/sm/api/sms/msg";
 		HttpResponse<String> data = Unirest.put(url).header("apikey", this.apikey).header("Content-Type", "application/x-www-form-urlencoded").field("destination", mobile).field("text",messageBody).asString();
-//		JSONArray arr = new JSONArray(data.getBody().toString());
-//		return "https://smapi.teamchat.com/SMApi/api/embed/"+arr.getJSONObject(0).getString("id");
 	}
 
 }
